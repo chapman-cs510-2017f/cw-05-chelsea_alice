@@ -12,18 +12,8 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #     plane = []
 #     fs = []
     
-    def __init__(self,xmin,xmax,xlen,ymin,ymax,ylen):
-        self.xmin  = float(xmin)
-        self.xmax  = float(xmax)
-        self.xlen  = int(xlen)
-        self.ymin  = float(ymin)
-        self.ymax  = float(ymax)
-        self.ylen  = int(ylen)
+    def gen_plane(self,xmin,xmax,xlen,ymin,ymax,ylen):
         self.plane =  []
-        self.fs = []
-        # The implementation type of plane is up to the user
-        # fs should be a list of functions, initialized to be empty
-        #x's
         self.dx = (self.xmax-self.xmin)/(self.xlen-1)
         xs = [self.xmin]
         s = self.xmin
@@ -45,6 +35,43 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
             for k in range(0,self.ylen):
                 p.append(xs[i]+ys[k])
             self.plane.append(p)
+        print(self.plane)
+        return self.plane
+        
+    def __init__(self,xmin,xmax,xlen,ymin,ymax,ylen):
+        self.xmin  = float(xmin)
+        self.xmax  = float(xmax)
+        self.xlen  = int(xlen)
+        self.ymin  = float(ymin)
+        self.ymax  = float(ymax)
+        self.ylen  = int(ylen)
+        self.plane =  []
+        self.fs = []
+        self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
+#         # The implementation type of plane is up to the user
+#         # fs should be a list of functions, initialized to be empty
+#         #x's
+#         self.dx = (self.xmax-self.xmin)/(self.xlen-1)
+#         xs = [self.xmin]
+#         s = self.xmin
+#         for i in range(0,self.xlen-1):
+#             s += self.dx #increment based on length of dx
+#             s = round(s,3)
+#             xs.append(s)
+#         self.dy = (self.ymax-self.ymin)/(self.ylen-1)
+#         yx = []
+#         ys = [self.ymin*1j]
+#         s = self.ymin
+#         for i in range(0,self.ylen-1):
+#             s += self.dy #increment based on length of dx
+#             s = round(s,3)
+#             ys.append(s*1j)
+        
+#         for i in range(0,self.xlen):
+#             p = []
+#             for k in range(0,self.ylen):
+#                 p.append(xs[i]+ys[k])
+#             self.plane.append(p)
         print(self.plane)
         
     def apply(self,f):
@@ -56,47 +83,15 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         print(self.plane)
     
     def refresh(self):
-        self.xmin  = float(xmin)
-        self.xmax  = float(xmax)
-        self.xlen  = int(xlen)
-        self.ymin  = float(ymin)
-        self.ymax  = float(ymax)
-        self.ylen  = int(ylen)
-        self.plane =  []
-        self.fs = []
-        # The implementation type of plane is up to the user
-        # fs should be a list of functions, initialized to be empty
-        #x's
-        self.dx = (self.xmax-self.xmin)/(self.xlen-1)
-        xs = [self.xmin]
-        s = self.xmin
-        for i in range(0,self.xlen-1):
-            s += self.dx #increment based on length of dx
-            s = round(s,3)
-            xs.append(s)
-        self.dy = (self.ymax-self.ymin)/(self.ylen-1)
-        yx = []
-        ys = [self.ymin*1j]
-        s = self.ymin
-        for i in range(0,self.ylen-1):
-            s += self.dy #increment based on length of dx
-            s = round(s,3)
-            ys.append(s*1j)
+        self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
         
-        for i in range(0,self.xlen):
-            p = []
-            for k in range(0,self.ylen):
-                p.append(xs[i]+ys[k])
-            self.plane.append(p)
         
-    def zoom(self,xmin,xmax,xlen,ymin,ymax,ylen):
-        for f in fs:
-            apply(f)
-        return plane
+    def zoom(self):
+        self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
+        for f in self.fs:
+            self.apply(f)
+        return self.plane
     
-    def print_LIST(self,plane):
-        print(plane)
-        
 
            
 

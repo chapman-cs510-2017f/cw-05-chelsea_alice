@@ -47,7 +47,9 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         self.ylen  = int(ylen)
         self.plane =  []
         self.fs = []
+        print("init fx")
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
+        
 #         # The implementation type of plane is up to the user
 #         # fs should be a list of functions, initialized to be empty
 #         #x's
@@ -72,21 +74,23 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #             for k in range(0,self.ylen):
 #                 p.append(xs[i]+ys[k])
 #             self.plane.append(p)
-        print(self.plane)
+
         
     def apply(self,f):
         self.fs.append(f)
-        print(self.plane)
         for i in range(0,len(self.plane)):
             for k in range(0,len(self.plane[i])):
                 self.plane[i][k] = f(self.plane[i][k])
+        print("apply fx")
         print(self.plane)
     
     def refresh(self):
+        print("refresh fx")
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
         
         
     def zoom(self):
+        print("zoom fx")
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
         for f in self.fs:
             self.apply(f)

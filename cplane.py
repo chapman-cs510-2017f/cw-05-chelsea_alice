@@ -78,12 +78,20 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         
     def apply(self,f):
         self.fs.append(f)
+#         for i in range(0,len(self.plane)):
+#             for k in range(0,len(self.plane[i])):
+#                 self.plane[i][k] = f(self.plane[i][k])
+#         print("apply fx")
+#         print(self.plane)
+        self.changeplane(f)
+        
+    def changeplane(self,f):
         for i in range(0,len(self.plane)):
             for k in range(0,len(self.plane[i])):
                 self.plane[i][k] = f(self.plane[i][k])
         print("apply fx")
         print(self.plane)
-    
+        
     def refresh(self):
         print("refresh fx")
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
@@ -93,7 +101,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         print("zoom fx")
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
         for f in self.fs:
-            self.apply(f)
+            self.changeplane(f)
         return self.plane
     
 

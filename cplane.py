@@ -13,6 +13,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #     fs = []
     
     def gen_plane(self,xmin,xmax,xlen,ymin,ymax,ylen):
+        '''make it plane'''
         self.plane =  []
         self.dx = (self.xmax-self.xmin)/(self.xlen-1)
         xs = [self.xmin]
@@ -77,6 +78,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 
         
     def apply(self,f):
+        '''apply function to plane and then append it to list of functions'''
         self.fs.append(f)
 #         for i in range(0,len(self.plane)):
 #             for k in range(0,len(self.plane[i])):
@@ -86,6 +88,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         self.changeplane(f)
         
     def changeplane(self,f):
+        '''apply function to plane'''
         for i in range(0,len(self.plane)):
             for k in range(0,len(self.plane[i])):
                 self.plane[i][k] = f(self.plane[i][k])
@@ -93,11 +96,13 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         print(self.plane)
         
     def refresh(self):
+        '''refresh plane with original numbers'''
         print("refresh fx")
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
         
         
     def zoom(self):
+        '''refresh plane with original numbers and do functions again'''
         print("zoom fx")
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
         for f in self.fs:

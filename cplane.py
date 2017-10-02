@@ -27,7 +27,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         ys = [self.ymin*1j]
         s = self.ymin
         for i in range(0,self.ylen-1):
-            s += self.dy #increment based on length of dx
+            s += self.dy #increment based on length of dy
             s = round(s,3)
             ys.append(s*1j)
         
@@ -101,9 +101,16 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
         
         
-    def zoom(self):
-        '''refresh plane with original numbers and do functions again'''
+    def zoom(self,newxmin,newxmax,newxlen,newymin,newymax,newylen):
+        '''refresh plane with new given numbers and do functions again'''
         print("zoom fx")
+        self.xmin=newxmin #pass in new plane parameters 
+        self.xmax=newxmax
+        self.xlen=newxlen
+        self.ymin=newxmin
+        self.ymax=newxmax
+        self.ylen=newxlen
+        
         self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
         for f in self.fs:
             self.changeplane(f)

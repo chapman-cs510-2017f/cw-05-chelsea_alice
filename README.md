@@ -23,7 +23,7 @@
 
 Analyze in this section what you found useful about this assignment in your own words. Include any lingering questions or comments that you may have.
 
-**CHANGEME**
+**It was good to catch up on the python best practices for things like docstrings, and comments. Remembering how to use classes was also useful, especially when we ran into issues with scope and had to really think about which variables were in scope.**
 
 ## Honor Pledge
 

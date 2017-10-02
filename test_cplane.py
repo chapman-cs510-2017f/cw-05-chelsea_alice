@@ -1,7 +1,7 @@
 ###
 # Name: Sook Mun Wong, Chelsea Parlett-Pelleriti
-# Student ID: 2303539
-# Email: sowong@chapman.edu
+# Student ID: 2303539 & 2298930
+# Email: sowong@chapman.edu & parlett@chapman.edu
 # Course: CS510 Fall 2017
 # Assignment: CW-05
 ###

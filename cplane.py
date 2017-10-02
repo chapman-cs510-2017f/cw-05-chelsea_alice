@@ -1,3 +1,11 @@
+###
+# Name: Sook Mun Wong, Chelsea Parlett-Pelleriti
+# Student ID: 2303539
+# Email: sowong@chapman.edu
+# Course: CS510 Fall 2017
+# Assignment: CW-05
+###
+
 import abscplane
 from abc import ABC, abstractmethod
 

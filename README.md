@@ -2,7 +2,7 @@
 
 **Author(s):** **Chelsea Parlett-Pelleriti and Alice Wong**
 
-[![Build Status](https://travis-ci.org/chapman-cs510-2017f/cw-05-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2017f/cw-05-chelsea_alice)
+[![Build Status](https://travis-ci.org/chapman-cs510-2017f/cw-05-chelsea_alice.svg?branch=master)](https://travis-ci.org/chapman-cs510-2017f/cw-05-chelsea_alice)
 
 
 ## Specification
